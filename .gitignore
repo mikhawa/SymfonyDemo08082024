@@ -22,3 +22,9 @@
 /public/assets/
 /assets/vendor/
 ###< symfony/asset-mapper ###
+
+###> jetbrains/phpstorm ###
+/.idea
+/.phpstorm.meta.php
+/.phpstorm.meta.php.tmp
+###< jetbrains/phpstorm ###
