@@ -27,7 +27,10 @@ class Tag implements \JsonSerializable
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column(type: Types::INTEGER)]
+    #[ORM\Column(
+        type: Types::INTEGER,
+        options: ['unsigned' => true]
+    )]
     private ?int $id = null;
 
     #[ORM\Column(type: Types::STRING, unique: true)]
