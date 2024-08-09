@@ -80,6 +80,37 @@ cd my_project/
 ./bin/phpunit
 ```
 
+
+
+## Migration vers MySQL 8
+
+### Création du fichier `.env.local`
+
+Nous allons dupliquer le fichier `.env` sous le nom `.env.local`
+(il sera ignoré sur `Github`)
+
+Puis modifier le chemin vers la base de donnée MySQL :
+
+```dotenv
+#  * .env.local          uncommitted file with local overrides
+# ...
+# Base de donnée originale en sqlite
+# DATABASE_URL=sqlite:///%kernel.project_dir%/data/database.sqlite
+# Nouvelle base de donnée en MySQL 8.2
+DATABASE_URL="mysql://root:@127.0.0.1:3306/demo_symfony_7?serverVersion=8.2&charset=utf8mb4"
+# ...
+```
+
+### Création de la base de donnée
+
+Nous allons créer la base de donnée en utilisant `Doctrine`
+
+```bash
+php bin/console doctrine:database:create 
+```
+
+
+
 [1]: https://symfony.com/doc/current/best_practices.html
 [2]: https://symfony.com/doc/current/setup.html#technical-requirements
 [3]: https://symfony.com/doc/current/setup/web_server_configuration.html
