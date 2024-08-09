@@ -145,6 +145,22 @@ Pour optimiser le passage de SQLite vers MySQL, nous allons modifier légèremen
     private ?int $id = null;
 ```
 
+#### `src/Entity/User.php`
+
+```php
+// On remplace
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: Types::INTEGER)]
+    private ?int $id = null;
+// Par
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: Types::INTEGER, 
+    options: ["unsigned" => true])]
+    private ?int $id = null;
+```
+
 
 [1]: https://symfony.com/doc/current/best_practices.html
 [2]: https://symfony.com/doc/current/setup.html#technical-requirements
