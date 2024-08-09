@@ -127,6 +127,16 @@ Pour optimiser le passage de SQLite vers MySQL, nous allons modifier légèremen
     #[ORM\Column(type: Types::INTEGER, 
     options: ["unsigned" => true])]
     private ?int $id = null;
+// puis
+    #[ORM\Column(type: Types::TEXT)]
+    #[Assert\NotBlank(message: 'comment.blank')]
+    #[Assert\Length(min: 5, minMessage: 'comment.too_short', max: 10000, maxMessage: 'comment.too_long')]
+    private ?string $content = null;
+// Par
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    #[Assert\NotBlank(message: 'comment.blank')]
+    #[Assert\Length(min: 5, minMessage: 'comment.too_short', max: 1000, maxMessage: 'comment.too_long')]
+    private ?string $content = null;
 ```
 
 #### `src/Entity/Post.php`
@@ -186,6 +196,7 @@ php bin/console make:migration
 php bin/console doctrine:migrations:migrate
 ```
 
+Syntax error or access violation : 1071 La clé est trop longue. Longueur maximale : 1000
 
 [1]: https://symfony.com/doc/current/best_practices.html
 [2]: https://symfony.com/doc/current/setup.html#technical-requirements
