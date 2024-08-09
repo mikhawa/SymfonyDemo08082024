@@ -124,7 +124,24 @@ Pour optimiser le passage de SQLite vers MySQL, nous allons modifier légèremen
 // Par
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column(type: Types::INTEGER, options: ["unsigned" => true])]
+    #[ORM\Column(type: Types::INTEGER, 
+    options: ["unsigned" => true])]
+    private ?int $id = null;
+```
+
+#### `src/Entity/Post.php`
+
+```php
+// On remplace
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: Types::INTEGER)]
+    private ?int $id = null;
+// Par
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: Types::INTEGER, 
+    options: ["unsigned" => true])]
     private ?int $id = null;
 ```
 
