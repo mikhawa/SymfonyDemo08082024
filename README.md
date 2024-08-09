@@ -109,6 +109,24 @@ Nous allons créer la base de donnée en utilisant `Doctrine`
 php bin/console doctrine:database:create 
 ```
 
+### Modification des entités
+
+Pour optimiser le passage de SQLite vers MySQL, nous allons modifier légèrement les entités.
+
+#### `src/Entity/Comment.php`
+
+```php
+// On remplace
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: Types::INTEGER)]
+    private ?int $id = null;
+// Par
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: Types::INTEGER, options: ["unsigned" => true])]
+    private ?int $id = null;
+```
 
 
 [1]: https://symfony.com/doc/current/best_practices.html
