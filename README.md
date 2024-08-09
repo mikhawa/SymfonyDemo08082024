@@ -177,6 +177,14 @@ Pour optimiser le passage de SQLite vers MySQL, nous allons modifier légèremen
     private ?int $id = null;
 ```
 
+### Mise à jour de la base de donnée
+
+Nous allons mettre à jour la base de donnée en utilisant `MakerBundle`
+
+```bash
+php bin/console make:migration
+php bin/console doctrine:migrations:migrate
+```
 
 
 [1]: https://symfony.com/doc/current/best_practices.html
