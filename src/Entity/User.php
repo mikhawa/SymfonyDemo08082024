@@ -40,19 +40,30 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column(type: Types::INTEGER)]
+    #[ORM\Column(
+        type: Types::INTEGER,
+        options: ['unsigned' => true]
+    )]
     private ?int $id = null;
 
     #[ORM\Column(type: Types::STRING)]
     #[Assert\NotBlank]
     private ?string $fullName = null;
 
-    #[ORM\Column(type: Types::STRING, unique: true)]
+    #[ORM\Column(
+        type: Types::STRING,
+        unique: true,
+        options: ["length" => 191]
+    )]
     #[Assert\NotBlank]
     #[Assert\Length(min: 2, max: 50)]
     private ?string $username = null;
 
-    #[ORM\Column(type: Types::STRING, unique: true)]
+    #[ORM\Column(
+        type: Types::STRING,
+        unique: true,
+        options: ["length" => 191]
+    )]
     #[Assert\Email]
     private ?string $email = null;
 

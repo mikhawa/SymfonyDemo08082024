@@ -32,7 +32,10 @@ class Comment
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column(type: Types::INTEGER)]
+    #[ORM\Column(
+        type: Types::INTEGER,
+        options: ['unsigned' => true]
+    )]
     private ?int $id = null;
 
     #[ORM\ManyToOne(targetEntity: Post::class, inversedBy: 'comments')]

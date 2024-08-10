@@ -27,10 +27,17 @@ class Tag implements \JsonSerializable
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column(type: Types::INTEGER)]
+    #[ORM\Column(
+        type: Types::INTEGER,
+        options: ['unsigned' => true]
+    )]
     private ?int $id = null;
 
-    #[ORM\Column(type: Types::STRING, unique: true)]
+    #[ORM\Column(
+        type: Types::STRING,
+        unique: true,
+        options: ["length" => 191]
+    )]
     private readonly string $name;
 
     public function __construct(string $name)

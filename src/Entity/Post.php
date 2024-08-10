@@ -38,14 +38,20 @@ class Post
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column(type: Types::INTEGER)]
+    #[ORM\Column(
+        type: Types::INTEGER,
+        options: ['unsigned' => true]
+    )]
     private ?int $id = null;
 
     #[ORM\Column(type: Types::STRING)]
     #[Assert\NotBlank]
     private ?string $title = null;
 
-    #[ORM\Column(type: Types::STRING)]
+    #[ORM\Column(
+        type: Types::STRING,
+        options: ["length" => 191]
+    )]
     private ?string $slug = null;
 
     #[ORM\Column(type: Types::STRING)]
