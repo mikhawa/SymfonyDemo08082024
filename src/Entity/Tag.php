@@ -33,7 +33,11 @@ class Tag implements \JsonSerializable
     )]
     private ?int $id = null;
 
-    #[ORM\Column(type: Types::STRING, unique: true)]
+    #[ORM\Column(
+        type: Types::STRING,
+        unique: true,
+        options: ["length" => 191]
+    )]
     private readonly string $name;
 
     public function __construct(string $name)

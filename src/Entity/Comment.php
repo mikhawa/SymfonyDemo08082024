@@ -44,7 +44,7 @@ class Comment
 
     #[ORM\Column(type: Types::TEXT)]
     #[Assert\NotBlank(message: 'comment.blank')]
-    #[Assert\Length(min: 5, minMessage: 'comment.too_short', max: 900, maxMessage: 'comment.too_long')]
+    #[Assert\Length(min: 5, minMessage: 'comment.too_short', max: 10000, maxMessage: 'comment.too_long')]
     private ?string $content = null;
 
     #[ORM\Column]

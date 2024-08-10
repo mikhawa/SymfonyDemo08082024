@@ -48,7 +48,10 @@ class Post
     #[Assert\NotBlank]
     private ?string $title = null;
 
-    #[ORM\Column(type: Types::STRING)]
+    #[ORM\Column(
+        type: Types::STRING,
+        options: ["length" => 191]
+    )]
     private ?string $slug = null;
 
     #[ORM\Column(type: Types::STRING)]
