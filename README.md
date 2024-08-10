@@ -229,10 +229,41 @@ Nous allons mettre à jour la base de donnée en utilisant `MakerBundle`
 
 ```bash
 php bin/console make:migration
+```
+
+Nous allons ensuite ouvrir le fichier de migration généré et ajouter les options d'encodage `utf8mb4` et de `collation` `utf8mb4_unicode_ci` pour chaque table, ainsi que le moteur `InnoDB`.
+
+```DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB' pour chaque table.```
+
+```php
+# migrations/Version20240810071705.php
+// ...
+    public function up(Schema $schema) : void
+    {
+        // this up() migration is auto-generated, please modify it to your needs
+        $this->addSql('CREATE TABLE symfony_demo_comment (id INT UNSIGNED AUTO_INCREMENT NOT NULL, content LONGTEXT NOT NULL, published_at DATETIME NOT NULL, post_id INT UNSIGNED NOT NULL, author_id INT UNSIGNED NOT NULL, INDEX IDX_53AD8F834B89032C (post_id), INDEX IDX_53AD8F83F675F31B (author_id), PRIMARY KEY(id)) 
+        DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+
+        $this->addSql('CREATE TABLE symfony_demo_post (id INT UNSIGNED AUTO_INCREMENT NOT NULL, title VARCHAR(255) NOT NULL, slug VARCHAR(191) NOT NULL, summary VARCHAR(255) NOT NULL, content LONGTEXT NOT NULL, published_at DATETIME NOT NULL, author_id INT UNSIGNED NOT NULL, INDEX IDX_58A92E65F675F31B (author_id), PRIMARY KEY(id)) 
+        DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+
+        $this->addSql('CREATE TABLE symfony_demo_post_tag (post_id INT UNSIGNED NOT NULL, tag_id INT UNSIGNED NOT NULL, INDEX IDX_6ABC1CC44B89032C (post_id), INDEX IDX_6ABC1CC4BAD26311 (tag_id), PRIMARY KEY(post_id, tag_id)) 
+        DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+
+        $this->addSql('CREATE TABLE symfony_demo_tag (id INT UNSIGNED AUTO_INCREMENT NOT NULL, name VARCHAR(191) NOT NULL, UNIQUE INDEX UNIQ_4D5855405E237E06 (name), PRIMARY KEY(id)) 
+        DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+
+        $this->addSql('CREATE TABLE symfony_demo_user (id INT UNSIGNED AUTO_INCREMENT NOT NULL, full_name VARCHAR(255) NOT NULL, username VARCHAR(191) NOT NULL, email VARCHAR(191) NOT NULL, password VARCHAR(255) NOT NULL, roles JSON NOT NULL, UNIQUE INDEX UNIQ_8FB094A1F85E0677 (username), UNIQUE INDEX UNIQ_8FB094A1E7927C74 (email), PRIMARY KEY(id)) 
+        DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+# ...
+```
+
+Nous allons ensuite exécuter la migration
+
+```bash
 php bin/console doctrine:migrations:migrate
 ```
 
-Syntax error or access violation : 1071 La clé est trop longue. Longueur maximale : 1000
 
 
 
