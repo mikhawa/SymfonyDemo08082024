@@ -280,7 +280,13 @@ Nous allons vérifier que tout fonctionne correctement
 symfony serve -d
 ```
 
-Voir le live UX sur src/Twig/Components/BlogSearchComponent.php
+### Base de donnée
+
+Elle est maintenant en MySQL 8.2
+
+On peut la charger à l'aide de `phpMyAdmin` ou de `MySQL Workbench` par exemple : 
+
+`dataMySQL/demo_symfony_7.sql`
 
 
 
