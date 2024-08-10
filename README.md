@@ -280,6 +280,10 @@ Nous allons vérifier que tout fonctionne correctement
 symfony serve -d
 ```
 
+Voir le live UX sur src/Twig/Components/BlogSearchComponent.php
+
+
+
 [1]: https://symfony.com/doc/current/best_practices.html
 [2]: https://symfony.com/doc/current/setup.html#technical-requirements
 [3]: https://symfony.com/doc/current/setup/web_server_configuration.html
