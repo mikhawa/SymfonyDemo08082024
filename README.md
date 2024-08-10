@@ -264,8 +264,21 @@ Nous allons ensuite exécuter la migration
 php bin/console doctrine:migrations:migrate
 ```
 
+### Ajout de données
 
+Nous allons ajouter des données dans la base de donnée
 
+```bash
+php bin/console doctrine:fixtures:load
+```
+
+### Vérification
+
+Nous allons vérifier que tout fonctionne correctement
+
+```bash
+symfony serve -d
+```
 
 [1]: https://symfony.com/doc/current/best_practices.html
 [2]: https://symfony.com/doc/current/setup.html#technical-requirements
