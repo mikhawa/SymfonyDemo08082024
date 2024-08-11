@@ -296,6 +296,14 @@ Puis
 
     php bin/console importmap:update
 
+## Mise à jour de la dépendance `lint`
+
+    php bin/console lint:twig templates/
+
+
+
+
+
 [1]: https://symfony.com/doc/current/best_practices.html
 [2]: https://symfony.com/doc/current/setup.html#technical-requirements
 [3]: https://symfony.com/doc/current/setup/web_server_configuration.html
