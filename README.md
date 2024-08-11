@@ -288,7 +288,13 @@ On peut la charger à l'aide de `phpMyAdmin` ou de `MySQL Workbench` par exemple
 
 `dataMySQL/demo_symfony_7.sql`
 
+## Mise à jour de importmap 
 
+    php bin/console importmap:audit
+
+Puis
+
+    php bin/console importmap:update
 
 [1]: https://symfony.com/doc/current/best_practices.html
 [2]: https://symfony.com/doc/current/setup.html#technical-requirements
